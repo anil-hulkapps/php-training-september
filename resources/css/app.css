@@ -1,0 +1,47 @@
+.resource-list-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.resource-list-item__state {
+    overflow: hidden;
+    width: 25%;
+    text-align: left;
+    padding-right: 10px;
+}
+
+.resource-list-item__zipcode {
+    width: 25%;
+    text-align: center;
+    padding-right: 10px;
+}
+
+.resource-list-item__shipping-status {
+    width: 12%;
+    text-align: center;
+    padding-right: 0;
+}
+
+.resource-list-pagination {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+}
+
+.resource-list-item__found {
+    width: 12%;
+    text-align: center;
+    padding-right: 0;
+}
+
+.resource-list-item__match {
+    width: 12%;
+    text-align: center;
+    padding-right: 0;
+}
+
+body {
+    background-color: transparent !important;
+}

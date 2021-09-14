@@ -1,0 +1,24 @@
+# This is a sample build configuration for PHP.
+# Check our guides at https://confluence.atlassian.com/x/e8YWN for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: atlassian/default-image:2
+
+definitions:
+  steps:
+    - step: &rollbar-notify
+        name: Rollbar Notification
+        script:
+          - pipe: rollbar/rollbar-notify:0.2.8
+            variables:
+              ROLLBAR_ACCESS_TOKEN: $ROLLBAR_TOKEN
+              ROLLBAR_ENVIRONMENT: 'production'
+pipelines:
+  branches:
+    master:
+      - step:
+          name: Production Deployment
+          script:
+            - cat deploy.sh | ssh root@68.183.61.129
+      - step: *rollbar-notify
