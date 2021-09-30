@@ -1,7 +1,6 @@
 <template>
     <PPage narrowWidth>
         <PLayout sectioned>
-            <!--<br><br>-->
             <PHeading>{{shop_name}}, Thank you for installing our app</PHeading>
             <p>Get ready to experience the freedom to stay focused on your business, not on tax management.</p><br />
             <PCard title="Introduction">
@@ -12,9 +11,6 @@
                     The app closely works with Avalara to calculate Excise Tax for all the Shopify Plus transactions triggered by what your customers buy at the checkout.
                 </PCardSection>
             </PCard>
-            <!--<PCard sectioned title="How it works">
-                The app closely works with Avalara to calculate Excise Tax for all the Shopify Plus transactions triggered by what your customers buy at the checkout.
-            </PCard>-->
             <PCard title="Setup">
                 <PCardSection>
                     <PCardSubsection>
@@ -24,7 +20,6 @@
                         2. Product configured in Avalara with excise taxation<br /><br />
                         <PButton @click="calendlyPopup" primary>Book a call</PButton><br /><br />
                         <router-link to="/step-1">I am technical sound and I want to configure on my own</router-link>
-                        <!--<PLink url="https://www.google.com/">I am technical sound and I want to configure on my own</PLink>-->
                     </PCardSubsection>
                 </PCardSection>
             </PCard>

@@ -9,11 +9,6 @@
                         <PCheckbox
                             helpText="We will calculate excise tax based on shopify product SKU, So to make sure you have mapped all of the product SKU with the excise product category with Avalara"
                             v-model="confirm_for_product_code" :checked="confirm_for_product_code" @change="handleCheck" id="helptext_checkbox_1" label="Confirm for product code" />
-                        <!--<PSelect :options="optionsPattern" label="Search products" v-model="identifier" @change="handleChangePatternSelect"/>
-                        <PFormLayoutGroup>
-                            <PSelect :options="options" v-model="option" @change="handleChangeOptionSelect"/>
-                            <PTextField v-model="value" :error="errors['value'] ? errors['value'][0] : ''"/>
-                        </PFormLayoutGroup>-->
                     </PFormLayout>
                 </PCardSection>
             </PCard>

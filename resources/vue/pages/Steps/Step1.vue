@@ -15,17 +15,12 @@
                             <PTextField id="client_id" label="Client ID" v-model="company_id" :error="errors['company_id'] ? errors['company_id'][0] : ''"/>
                             <div></div>
                         </PFormLayoutGroup>
-                        <!--<PFormLayoutGroup>
-                            <PTextStyle :variation="connectionVariation">{{ connectionMsg }}</PTextStyle>
-                        </PFormLayoutGroup>-->
                     </PFormLayout>
                 </PCardSection>
             </PCard>
             <PLayoutSection>
                 <PPageActions :primaryAction="{content: 'Continue', onAction: handleButtonEvent}"></PPageActions>
             </PLayoutSection>
-            <!--<br /><br />
-            <PButton primary @click="handleButtonEvent()">Continue</PButton>-->
         </PLayout>
     </PPage>
 </template>
