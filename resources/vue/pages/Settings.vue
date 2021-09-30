@@ -21,13 +21,6 @@
                     </PFormLayout>
                 </PCard>
             </PLayoutAnnotatedSection>
-            <!--<PLayoutAnnotatedSection title="Auto confirm the order" description="Fill in the details and integrate the app with Avalara account">
-                <PCard sectioned>
-                    <PFormLayout>
-                        <PCheckbox helpText="Checkbox help text goes here" v-model="confirm_order" :checked="confirm_order" @change="handleCheck" id="helptext_checkbox_1" label="Confirm orders automatically" />
-                    </PFormLayout>
-                </PCard>
-            </PLayoutAnnotatedSection>-->
             <PLayoutAnnotatedSection title="Map custom strings" description="Map the custom strings for orders & line item information to display in the Avalara account">
                 <PCard>
                     <PCardSection title="Order Information">
@@ -94,7 +87,6 @@
                                     <PStack>
                                         <PStackItem>
                                             <PTextField :id="'custom_value'+index" connected :label="'Static value '+parseInt(index+1)" v-model="addiField.value">
-                                                <!--<PButton slot="connectedRight" icon="DeleteMinor" @click="removeAdditionalField(index)"></PButton>-->
                                             </PTextField>
                                         </PStackItem>
                                         <PStackItem>
@@ -112,7 +104,6 @@
                 <PCard sectioned>
                     <PFormLayout>
                         <PSelect :options="productForExciseOptions" label="Select products" v-model="productForExciseOption" @change="handleChangeProductForExcise"/>
-                        <!--<tags-input element-id="values" v-model="productForExciseSelectedValues" placeholder="" :typeahead="true" v-if="productForExciseOption > 2"></tags-input>-->
                         <template v-if="productForExciseOption === 2">
                             <PModal :primaryAction="{content: 'Save', onAction: submitFile}" :secondaryActions="[{content:'Cancel', onAction: () => {is_active_modal = false}}]" title="Import products file" :open="is_active_modal" sectioned @close="is_active_modal = false">
                                 <PFormLayout>
@@ -130,32 +121,22 @@
                     <PCheckbox
                         helpText="We will calculate excise tax based on shopify product SKU, So to make sure you have mapped all of the product SKU with the excise product category with Avalara"
                         v-model="confirm_for_product_code" :checked="confirm_for_product_code" :disabled="true" @change="handleCheckboxConfirm" id="helptext_checkbox_2" label="Confirm for product code" />
-                    <!--<PFormLayout>
-                        <PSelect :options="optionsPattern" label="Search products" v-model="identifier" @change="handleChangePatternForProductCode"/>
-                        <PFormLayoutGroup>
-                            <PSelect :options="productCodeOptions" v-model="productCodeOption" @change="handleChangeOptionForProductCode"/>
-                            <PTextField id="idetifier" v-model="productCodeValue" :error="errors['productIdentifierForExcise.value'] ? errors['productIdentifierForExcise.value'][0] : ''"/>
-                        </PFormLayoutGroup>
-                    </PFormLayout>-->
+
                 </PCard>
             </PLayoutAnnotatedSection>
             <PLayoutAnnotatedSection title="Failover Notification" description="Define a default course of notification during a failure checkout">
                 <PCard>
                     <PCardSection title="Place an order with due Excise Tax">
                         <PFormLayout>
-                            <!--<PSelect :options="actionOptions" label="Notify Your Customer" v-model="actionSelect" @change="handleChangeActionSelect('actionSelect', $event)"/>-->
                             <PTextField @input="handleChange" :minHeight="100" v-model="dueExciseNotification" multiline id="input_field" label="Note to display in checkout" />
                                 <PSelect label="Order identifier" :options="actionIdentifierOptions" v-model="actionIdentifier" @change="handleChangeActionSelect('actionIdentifier', $event)"/>
-                                <!--<PTextField label="Tag value" v-model="tagValue"/>-->
                                 <tags-input element-id="tags" v-model="dueExciseTags" placeholder="" :typeahead="true"></tags-input>
                         </PFormLayout>
                     </PCardSection>
                     <PCardSection title="Unauthorize location">
                         <PFormLayout>
-                            <!--<PSelect :options="actionOptions" label="Notify Your Customer" v-model="actionSelect" @change="handleChangeActionSelect('actionSelect', $event)"/>-->
                             <PTextField @input="handleChange" :minHeight="100" v-model="unauthorizeNotification" multiline id="input_field2" label="Note to display in checkout" />
                             <PSelect label="Order identifier" :options="actionIdentifierOptions" v-model="actionIdentifier" @change="handleChangeActionSelect('actionIdentifier', $event)"/>
-                            <!--<PTextField label="Tag value" v-model="tagValue"/>-->
                             <tags-input element-id="tags" v-model="unauthorizeTags" placeholder="" :typeahead="true"></tags-input>
                         </PFormLayout>
                     </PCardSection>
@@ -180,11 +161,7 @@
                     onAction: this.submitForm,
                 },
                 productForExciseOptions: [
-                    //{label: 'All', value: 1},
                     {label: 'Avalara Synced Products', value: 2},
-                    // {label: 'By Tag', value: 3},
-                    // {label: 'By Type', value: 4},
-                    // {label: 'By Vendor', value: 5},
                 ],
                 orderOptions: [
                     {label: 'Start With', value: 1},
@@ -220,7 +197,6 @@
                 ],
                actionOptions: [
                     {label: 'Place an order with due Excise Tax', value: 1},
-                    /*{label: 'Doesn\'t place an order without Excise Tax', value: 2},*/
                     {label: 'Unauthorize location', value: 3},
                 ],
                 actionIdentifierOptions: [
@@ -415,9 +391,6 @@
                     this.actionSelect = response.failoverCheckout.action;
                     this.actionIdentifier = response.failoverCheckout.identifier;
                     this.tagValue = response.failoverCheckout.value;
-                    //this.tempcheckoutMessage = JSON.parse(response.failoverCheckout.failover_message);
-                    //this.checkoutMessage = response.failoverCheckout.message;
-                    //this.checkoutMessage = this.tempcheckoutMessage[this.actionSelect];
                     this.dueExciseNotification = response.failoverCheckout[0].message;
                     this.unauthorizeNotification = response.failoverCheckout[1].message;
                     this.dueExciseTags = response.failoverCheckout[0].tags != null ? JSON.parse(response.failoverCheckout[0].tags) : [];
@@ -429,12 +402,6 @@
             },
             handleChangeProductForExcise(e) {
                 this.productForExciseOption = e;
-            },
-            handleChangePatternForProductCode(e) {
-                this.identifier = e;
-            },
-            handleChangeOptionForProductCode(e) {
-                this.productCodeOption = e;
             },
             handleChangeOptionSelect(field, e) {
                 this[field] = e;
@@ -461,14 +428,10 @@
                 this.confirm_for_product_code = $event.checked;
             },
             addMore() {
-                //console.log(this.additionalStaticField);
-                //let len = this.additionalStaticField.length + 1;
                 this.additionalStaticField.push({customField: 'additionalCustomField'+parseInt(this.additionalStaticField.length + 1), option: 1, value: ''});
             },
             removeAdditionalField(index) {
-                //console.log(index);
                 this.additionalStaticField.splice(index, 1);
-                //console.log(this.additionalStaticField);
             },
             async testConnection()
             {

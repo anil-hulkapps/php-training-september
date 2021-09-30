@@ -21,9 +21,6 @@
                         :footerContent="(!products.length) ? 'No Products Found' : tableFooter">
                         <template slot="body">
                             <tr v-for="(product, index) in products" :key="`row-${index}`" class="Polaris-DataTable__TableRow blackout-days">
-                                <!--<td class="Polaris-DataTable__Cell Polaris-DataTable__Cell&#45;&#45;verticalAlignMiddle Polaris-DataTable__Cell&#45;&#45">
-                                    <template><PImage :source="product.image_url" :alt="product.title" height="40" width="40" /> {{ product.title }}</template>
-                                </td>-->
                                 <td class="Polaris-DataTable__Cell Polaris-DataTable__Cell&#45;&#45;verticalAlignMiddle Polaris-DataTable__Cell&#45;&#45">
                                     <PStack alignment="center">
                                         <PStackItem><PThumbnail
@@ -51,7 +48,6 @@
         name: "Products",
         data() {
             return {
-                //statsDate: [helper.currentDateTime(2).startOf('week').format('YYYY-MM-DD'), helper.currentDateTime(2).format('YYYY-MM-DD')],
                 queryParams: {
                     page: 1,
                     search: '',
@@ -128,7 +124,6 @@
                     this.pagination.hasPrevious = Boolean(response.data.prev_page_url);
                     this.pagination.hasNext = Boolean(response.data.next_page_url);
                     this.tableFooter = 'Showing '+response.data.from+' - '+response.data.to+' of '+response.data.total+' Products';
-                    //console.log(response.data.data);
                 } catch ({response}) {
 
                 }

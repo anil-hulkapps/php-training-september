@@ -4,8 +4,6 @@
             <PTextContainer>
                 <p> Total tax collection for date selection is: {{currency}}{{total_excise_collection}}</p>
             </PTextContainer>
-            <!--<date-picker :lang="'en'">
-            </date-picker>-->
             <pDatePicker id="date_range" format="MM/DD/YYYY" :dateRange="date_range"
                           opens="left" @change="handleDateChange"></pDatePicker>
         </PButtonGroup>
