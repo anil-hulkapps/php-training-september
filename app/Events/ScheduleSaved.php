@@ -23,7 +23,6 @@ class ScheduleSaved
     public $scheduleTask;
     public function __construct(ScheduelTask $scheduleTask)
     {
-        \Log::info("in event");
         $this->scheduleTask = $scheduleTask;
     }
 
