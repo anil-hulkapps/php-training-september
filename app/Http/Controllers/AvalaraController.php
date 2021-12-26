@@ -29,7 +29,6 @@ class AvalaraController extends Controller
     {
         $input = $request->all();
         $requestData = $request['data'];
-        $data = $input;
         $requestDataAdjust = $requestData;
         $transactionLines = $requestData['TransactionLines'];
         $shop = $request->get('shop');
